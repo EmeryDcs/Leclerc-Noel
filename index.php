@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 	<main>
-		Contenu
+		Leclerc Noel
 	</main>
 
 <?php get_footer(); ?>
