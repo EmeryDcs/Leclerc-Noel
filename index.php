@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 	<main>
-		Contenu lol
+		salut enzo
 	</main>
 
 <?php get_footer(); ?>
