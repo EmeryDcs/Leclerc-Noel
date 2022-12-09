@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 	<main>
-		Contenu
+		Contenu lol
 	</main>
 
 <?php get_footer(); ?>
