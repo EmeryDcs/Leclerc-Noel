@@ -84,8 +84,12 @@ require_once(get_template_directory() . '/inc/functions/inc.medias.php');
 require_once(get_template_directory() . '/inc/functions/inc.menus.php');
 require_once(get_template_directory() . '/inc/theme.php');
 
+function header_geosearch(){
+	require_once(get_template_directory() . '/inc/geosearch.php');
+}add_action('wp_head', 'header_geosearch');
 
-
-
+function footer_map() {
+	require_once(get_template_directory() . '/inc/map.php');
+}add_action('wp_footer', 'footer_map');
 
 ?>

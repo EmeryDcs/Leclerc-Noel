@@ -20,11 +20,11 @@
 	<title><?php bloginfo('name'); ?> - <?php bloginfo('description'); ?></title>
 
 
-	<link rel="icon" href="<?= get_template_directory_uri(); ?>/favicon.ico">
+	<!-- <link rel="icon" href="<?= get_template_directory_uri(); ?>/favicon.ico">
 	<link rel="icon" href="<?= get_template_directory_uri(); ?>/icon.svg" type="image/svg+xml">
 	<link rel="apple-touch-icon" href="<?= get_template_directory_uri(); ?>/apple-touch-icon.png">
-	<link rel="manifest" href="<?= get_template_directory_uri(); ?>/manifest.webmanifest">
-
+	<link rel="manifest" href="<?= get_template_directory_uri(); ?>/manifest.webmanifest"> -->
+	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/sass/main.scss">
 
 	<?php wp_head(); ?>
 

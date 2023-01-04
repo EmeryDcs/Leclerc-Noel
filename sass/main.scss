@@ -22,9 +22,9 @@ sass --watch sass/main.scss:css/main.css --style compressed
 
 /* ---------- INIT */
 
-@import '_init/webfonts';
-@import '_init/variables';
-@import '_init/mixins';
+@import '_init/_webfonts.scss';
+@import '_init/_variables.scss';
+@import '_init/_mixins.scss';
 
 
 
@@ -32,7 +32,7 @@ sass --watch sass/main.scss:css/main.css --style compressed
 
 /* ---------- BALISES HTML COMMUNES */
 
-@import '_commun/structure';
+@import '_commun/_structure.scss';
 
 
 
@@ -40,9 +40,10 @@ sass --watch sass/main.scss:css/main.css --style compressed
 
 /* ---------- PAGES - structure */
 
-@import '_pages/homepage';
-@import '_pages/taxonomy';
-@import '_pages/single';
+@import '_pages/_homepage.scss';
+@import '_pages/_taxonomy.scss';
+@import '_pages/_single.scss';
+@import '_pages/_map.scss';
 
 //* {
 //	background-color: rgba( 0, 255, 0, 0.1 );// ----- LAYOUT DEBUG
