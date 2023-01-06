@@ -45,7 +45,7 @@
 
 
 		<!-- Choix du jour -->
-		<form method="post" action="">
+		<form method="post" action="" id="formSelectJour">
 			<select name="Jour" id="selectJour">
 				<?php 
 					for ($iJour=1; $iJour<25; $iJour++){
@@ -53,5 +53,14 @@
 					}
 				?>
 			</select>
+			<button type='submit' name='subSelectJour'>Choisir</button>
 		</form>
 	</header>
+
+
+<?php
+	if (isset($_POST['subSelectJour'])){
+		$_SESSION['jour']=$_POST['Jour'];
+		echo '<meta http-equiv="Refresh" content="0; url='.get_permalink().'">';
+	}
+?>	

@@ -95,7 +95,6 @@ function header_geosearch(){
 //Permet d'ajouter la map au footer
 function footer_map() {
 	require_once(get_template_directory() . '/inc/map.php');
-	require_once(get_template_directory() . '/inc/affichageJeu.js');
 }add_action('wp_footer', 'footer_map');
 
 //Supprime l'admin bar si je suis pas administrateur
