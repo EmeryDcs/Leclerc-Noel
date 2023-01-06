@@ -84,12 +84,73 @@ require_once(get_template_directory() . '/inc/functions/inc.medias.php');
 require_once(get_template_directory() . '/inc/functions/inc.menus.php');
 require_once(get_template_directory() . '/inc/theme.php');
 
+
+//----------------MES FONCTIONS WPLN------------------------------------
+
+//importe les CDN Geosearch et leaflet
 function header_geosearch(){
 	require_once(get_template_directory() . '/inc/geosearch.php');
 }add_action('wp_head', 'header_geosearch');
 
+//Permet d'ajouter la map au footer
 function footer_map() {
 	require_once(get_template_directory() . '/inc/map.php');
+	require_once(get_template_directory() . '/inc/affichageJeu.js');
 }add_action('wp_footer', 'footer_map');
+
+//Supprime l'admin bar si je suis pas administrateur
+function remove_admin_bar() {
+	if (!current_user_can('administrator') && !is_admin()) {
+	show_admin_bar(false);
+	}
+}add_action('after_setup_theme', 'remove_admin_bar');
+
+//Ajoute le fichier login.css à la page login
+function my_login_stylesheet() {
+    wp_enqueue_style( 'custom-login', get_template_directory_uri() . '/css/login.css' );
+}add_action( 'login_enqueue_scripts', 'my_login_stylesheet' );
+
+// Changer la PdP automatiquement de l'utilisateur
+// Récupération de l'ID de l'utilisateur
+$user_id = get_current_user_id();
+
+function change_photo_profil($user_id) {
+	session_start();
+	$value = get_template_directory().get_field('avatar', 'user_'.$user_id);
+
+	// Téléchargement de la nouvelle image
+	$upload_dir = wp_upload_dir();
+
+	$image_data = file_get_contents($value);
+	$filename = basename($value);
+	$upload = wp_upload_bits($filename, null, $image_data);
+
+	if(!$upload['error']) {
+		$wp_filetype = wp_check_filetype($filename, null );
+		$attachment = array(
+			'post_mime_type' => $wp_filetype['type'],
+			'post_title' => sanitize_file_name($filename),
+			'post_content' => '',
+			'post_status' => 'inherit'
+		);
+		$attachment_id = wp_insert_attachment( $attachment, $upload['file'], $user_id );
+
+		if(!is_wp_error($attachment_id)) {
+			require_once(ABSPATH . 'wp-admin/includes/image.php');
+
+			// Génération des miniatures de l'image
+			$attachment_data = wp_generate_attachment_metadata( $attachment_id, $upload['file'] );
+			wp_update_attachment_metadata( $attachment_id, $attachment_data );
+
+			// Mise à jour de la photo de profil de l'utilisateur
+			update_user_meta( $user_id, 'mm_sua_attachment_id', $attachment_id );
+			$user_info = array(
+				'ID' => $user_id,
+				'role' => 'subscriber'
+			);
+			wp_update_user($user_info);
+		} // if(!is_wp_error($attachment_id))
+	} //if(!$upload['error']) 
+}add_action( 'register_new_user', 'change_photo_profil' );
 
 ?>

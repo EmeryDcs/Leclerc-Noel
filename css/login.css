@@ -1,0 +1,16 @@
+/* #loginform{
+    background-image: url(./../images/png/croix.png);
+}
+
+.login h1 a {
+    background-image: url(./../images/png/croix.png);
+} */
+
+#language-switcher{
+    display:none;
+}
+
+img{
+    max-width: 20px;
+    max-height: 20px;
+}

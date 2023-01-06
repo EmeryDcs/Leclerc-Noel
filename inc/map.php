@@ -22,7 +22,7 @@ if ($query->have_posts()){
     echo '<pre>';
     var_dump($query->post);
     echo '</pre>';
-} //if if ($query->have_post())
+} //if ($query->have_post())
 
 ?>
     <script>

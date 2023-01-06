@@ -1,11 +1,6 @@
 <?php
 
-//	Header("Cache-Control: must-revalidate");
-//
-//	// 10 jours de validité de cache
-//	$offset = 60 * 60 * 24 * 10;
-//	$ExpStr = "Expires: " . gmdate("D, d M Y H:i:s", time() + $offset) . " GMT";
-//	Header($ExpStr);
+	session_start();
 
 ?>
 <!doctype html>
@@ -31,3 +26,32 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+	<header>
+		<?php 
+			if ( is_user_logged_in() ) { ?>
+				<div id='infoConnexion'>
+					Bienvenue, <?php echo wp_get_current_user()->display_name; ?>!
+					<a href="<?php echo wp_logout_url(get_permalink()); ?>">Déconnexion</a>
+				</div>
+		<?php 
+			} else {
+				$url = wp_login_url();
+		?>
+				<!-- <meta http-equiv="refresh" content="0;url='<?= $url ?>'"> -->
+		<?php 
+			} 
+		?>
+
+
+		<!-- Choix du jour -->
+		<form method="post" action="">
+			<select name="Jour" id="selectJour">
+				<?php 
+					for ($iJour=1; $iJour<25; $iJour++){
+						echo "<option value='".$iJour."'>".$iJour."</option>";
+					}
+				?>
+			</select>
+		</form>
+	</header>
