@@ -1,7 +1,17 @@
 
 #divCanva{
-    width:600px;
-    height:400px;
+    width:100vw;
+    height:100vh;
+    display: none;
+
+    position : absolute;
+    top:0;
+    left:0;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0.5);
 }
 
 // canvas:hover{
@@ -12,7 +22,34 @@
     display: none;
 }
 
-.profilUser{
+#profilUser{
+    display: none;
+    width: 100vw;
+    height: 100vh;
+
+    position : absolute;
+    top:0;
+    left:0;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0,0,0,0.5);
+}
+
+#fermerProfil{
+    position:absolute;
+    top:0;
+    right: 0;
+}
+
+#fermerCanva{
+    position:absolute;
+    top:0;
+    right: 0;
+}
+
+#voirJeu{
     display: none;
 }
 

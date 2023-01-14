@@ -63,7 +63,10 @@
 			<button type='submit' name='subSelectJour'>Choisir</button>
 		</form>
 
-		<div class='profilUser'>
+		<button id='voirProfil'>Voir Mon Profil</button>
+
+		<div id='profilUser'>
+			<img src="<?= get_template_directory_uri(); ?>/images/png/croix.png" alt="croix" id='fermerProfil'>
 			<?php 
 				$userId = wp_get_current_user()->ID;
 				$userName = wp_get_current_user()->display_name;

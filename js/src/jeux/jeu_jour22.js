@@ -1,5 +1,8 @@
 console.log('22');
 
+let voirJeu = document.getElementById("voirJeu");
+voirJeu.style.display = "block";
+
 canvas = document.getElementById('canvas');
 ctx = canvas.getContext('2d');
 
