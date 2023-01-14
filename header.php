@@ -2,11 +2,17 @@
 
 	session_start();
 
+
 	for ($i = 0; $i<24; $i++){
 		if (isset($_SESSION['jouet'.$i])){
 			setcookie('jour'.$i, $_SESSION['jour'.$i], time()+3600);
 			setcookie('jouet'.$i, $_SESSION['jouet'.$i], time()+3600);
 		}
+	}
+
+	if (!isset($_COOKIE['connectedOnce'])){
+		require_once(get_template_directory() . '/inc/instantGagnant.php');
+		setcookie('connectedOnce', true, time()+14400);
 	}
 
 ?>
