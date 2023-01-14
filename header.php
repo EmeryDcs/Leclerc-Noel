@@ -2,6 +2,13 @@
 
 	session_start();
 
+	for ($i = 0; $i<24; $i++){
+		if (isset($_SESSION['jouet'.$i])){
+			setcookie('jour'.$i, $_SESSION['jour'.$i], time()+3600);
+			setcookie('jouet'.$i, $_SESSION['jouet'.$i], time()+3600);
+		}
+	}
+
 ?>
 <!doctype html>
 <html lang="<?php bloginfo('language'); ?>" dir="ltr">
@@ -55,6 +62,30 @@
 			</select>
 			<button type='submit' name='subSelectJour'>Choisir</button>
 		</form>
+
+		<div class='profilUser'>
+			<?php 
+				$userId = wp_get_current_user()->ID;
+				$userName = wp_get_current_user()->display_name;
+				$size = 250;
+
+				echo get_avatar($userId, $size);
+			?>
+
+			<h2><?php echo $userName ; ?></h2>
+
+			<div id="imagesJouetPromo">
+				<?php 
+					for ($i = 0; $i<25; $i++){
+						if (isset($_COOKIE['jouet'.$i])){
+							?>
+							<img src='<?= $_COOKIE['jouet'.$i] ?>' alt = "Jouet en promo">
+							<?php
+						}
+					}
+				?>
+			</div>
+		</div>
 	</header>
 
 

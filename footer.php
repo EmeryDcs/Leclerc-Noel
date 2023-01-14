@@ -23,21 +23,20 @@
             
             if (isset($_POST['reussiteJeu'])){
                 unset($_SESSION['jour']);
-                $_COOKIE['jour'.$jour]=true;
+                $_SESSION['jour'.$jour]=true;
     
                 $rdmJouet = rand(1,3);
     
-                $_COOKIE['jouet'.$jour] = get_template_directory_uri().'/images/jpg/jouet'.$rdmJouet.'.jpg';
+                $_SESSION['jouet'.$jour] = get_template_directory_uri().'/images/jpg/jouet'.$rdmJouet.'.jpg';
+
+                echo $_COOKIE['jouet'.$jour];
     
-                echo 
-                '<script>
-                    let closeCanva =  document.getElementById("divCanva");
-                    closeCanva.style.display = "none";
-                </script>';
+		        echo '<meta http-equiv="Refresh" content="0; url='.get_permalink().'">';
             }
         }
     }
 ?>
+
 
 </body>
 </html>
