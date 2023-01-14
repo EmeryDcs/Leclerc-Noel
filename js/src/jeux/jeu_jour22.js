@@ -1,12 +1,11 @@
 console.log('22');
 
-console.log('10');
-
 canvas = document.getElementById('canvas');
 ctx = canvas.getContext('2d');
 
-let niveau = 'jeu';
+let niveau = 'debut';
 let testClic = false;
+let testPointer = 0;
 
 let imageIntro  = new Image();
 let imageTuto   = new Image();
@@ -69,51 +68,54 @@ lumiereJaune.src     = repertoire+'/images/png/jeu_sapin/jeu_sapinLumiereJaune.p
 lumiereCyan.src      = repertoire+'/images/png/jeu_sapin/jeu_sapinLumiereCyan.png';
 lumiereOrange.src    = repertoire+'/images/png/jeu_sapin/jeu_sapinLumiereOrange.png';
 
-let obsBouleVert       = new Obstacle(24, 51, 130, 33,'vert');
-let obsBouleBleu       = new Obstacle(24, 51, 130, 33,'bleu');
 let obsBouleViolet     = new Obstacle(24, 51, 130, 33,'violet');
-let obsBouleRouge      = new Obstacle(24, 51, 130, 33,'rouge');
-let obsBouleJaune      = new Obstacle(24, 51, 130, 33,'jaune');
-let obsBouleOrange     = new Obstacle(24, 51, 130, 33,'orange');
+let obsBouleBleu       = new Obstacle(24, 51+33, 130, 33,'bleu');
+let obsBouleVert       = new Obstacle(24, 51+66, 130, 33,'vert');
+let obsBouleJaune      = new Obstacle(24+130, 51, 130, 33,'jaune'); 
+let obsBouleRouge      = new Obstacle(24+130, 51+33, 130, 33,'rouge');
+let obsBouleOrange     = new Obstacle(24+130, 51+66, 130, 33,'orange');
 
-let obsNoeudVert       = new Obstacle(28, 25, 50, 60,'vert');
-let obsNoeudRouge      = new Obstacle(28, 25+60*1, 50, 60,'rouge');
-let obsNoeudJaune      = new Obstacle(28, 25+60*2, 50, 60,'jaune');
-let obsNoeudViolet     = new Obstacle(28, 25+60*3, 50, 60,'violet');
-let obsNoeudBleu       = new Obstacle(28, 25+60*4, 50, 60,'bleu');
-let obsNoeudCyan       = new Obstacle(28, 25+60*5, 50, 60,'cyan');
+let obsNoeudRouge      = new Obstacle(25, 223, 105, 35,'rouge');
+let obsNoeudViolet     = new Obstacle(25, 223+35, 105, 35,'violet');
+let obsNoeudCyan       = new Obstacle(25, 223+70, 105, 35,'cyan');
+let obsNoeudVert       = new Obstacle(25+105, 223, 105, 35,'vert');
+let obsNoeudJaune      = new Obstacle(25+105, 223+35, 105, 35,'jaune');
+let obsNoeudBleu       = new Obstacle(25+105, 223+70, 105, 35,'bleu');
 
-let obsGuirlandeRouge      = new Obstacle(100, 320, 75, 60,'rouge');
-let obsGuirlandeJaune      = new Obstacle(100+75*1, 320, 75, 60,'jaune');
-let obsGuirlandeCyan       = new Obstacle(100+75*3, 320, 75, 60,'cyan');
-let obsGuirlandeViolet     = new Obstacle(100+75*4, 320, 75, 60,'violet');
-let obsGuirlandeBleu       = new Obstacle(100+75*6, 320, 75, 60,'bleu');
-let obsGuirlandeVert       = new Obstacle(100+75*7, 320, 75, 60,'vert');
+let obsGuirlandeViolet     = new Obstacle(580, 225, 105, 40,'violet');
+let obsGuirlandeCyan       = new Obstacle(580, 225+40, 105, 40,'cyan');
+let obsGuirlandeRouge      = new Obstacle(580, 225+80, 105, 40,'rouge');
+let obsGuirlandeVert       = new Obstacle(580+105, 225, 105, 40,'vert');
+let obsGuirlandeJaune      = new Obstacle(580+105, 225+40, 105, 40,'jaune');
+let obsGuirlandeBleu       = new Obstacle(580+105, 225+80, 105, 40,'bleu');
 
-let obsLumiereVert     = new Obstacle(720, 65, 70, 30,'vert');
-let obsLumiereCyan     = new Obstacle(720, 65+30*2, 70, 30,'cyan');
-let obsLumiereRouge    = new Obstacle(720, 65+30*3, 70, 30,'rouge');
-let obsLumiereBleu     = new Obstacle(720, 65+30*6, 70, 30,'bleu');
-let obsLumiereOrange   = new Obstacle(720, 65+30*7, 70, 30,'orange');
-let obsLumiereJaune    = new Obstacle(720, 65+30*8, 70, 30,'jaune');
+let obsLumiereVert     = new Obstacle(533, 51, 115, 30,'vert');
+let obsLumiereCyan     = new Obstacle(533, 51+30, 115, 30,'cyan');
+let obsLumiereRouge    = new Obstacle(533, 51+60, 115, 30,'rouge');
+let obsLumiereBleu     = new Obstacle(533+115, 51, 115, 30,'bleu');
+let obsLumiereOrange   = new Obstacle(533+115, 51+30, 115, 30,'orange');
+let obsLumiereJaune    = new Obstacle(533+115, 51+60, 115, 30,'jaune');
 
-let obsWin             = new Obstacle(730,345, 47, 47);
+let obsWin             = new Obstacle(372, 14, 65, 62); //L'étoile sera le win
 
 let tabObsBoule         = [obsBouleVert, obsBouleBleu, obsBouleViolet, obsBouleRouge, obsBouleJaune, obsBouleOrange];
 let tabObsNoeud         = [obsNoeudVert, obsNoeudRouge, obsNoeudJaune, obsNoeudViolet, obsNoeudBleu, obsNoeudCyan];
 let tabObsGuirlande     = [obsGuirlandeRouge, obsGuirlandeJaune, obsGuirlandeCyan, obsGuirlandeViolet, obsGuirlandeBleu, obsGuirlandeVert];
 let tabObsLumiere       = [obsLumiereVert, obsLumiereCyan, obsLumiereRouge, obsLumiereBleu, obsLumiereOrange, obsLumiereJaune];
 
-let dessinGuirlandeCouleur     = '';
-let dessinLumiereCouleur     = '';
-let dessinBouleCouleur   = '';
-let dessinNoeudCouleur     = '';
+let dessinGuirlandeCouleur      = '';
+let dessinLumiereCouleur        = '';
+let dessinBouleCouleur          = '';
+let dessinNoeudCouleur          = '';
 
-let obsSuiteIntro = new Obstacle(245,275,110,30);
-let obsSuiteTuto = new Obstacle(390,280,110,30);
+let obsSuiteTuto = new Obstacle(245,275,110,30);
+let obsSuiteIntro = new Obstacle(390,280,110,30);
+
+let tabAllObstacle = [obsBouleVert, obsBouleBleu, obsBouleViolet, obsBouleRouge, obsBouleJaune, obsBouleOrange, obsNoeudVert, obsNoeudRouge, obsNoeudJaune, obsNoeudViolet, obsNoeudBleu, obsNoeudCyan, obsGuirlandeRouge, obsGuirlandeJaune, obsGuirlandeCyan, obsGuirlandeViolet, obsGuirlandeBleu, obsGuirlandeVert, obsLumiereVert, obsLumiereCyan, obsLumiereRouge, obsLumiereBleu, obsLumiereOrange, obsLumiereJaune, obsWin];
 
 //Ecoute du déplacement de la souris
 document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener("touchmove", mouseMoveHandler, false);
 
 function mouseMoveHandler(e) {
     var canvasX = e.offsetX;
@@ -135,12 +137,21 @@ canvas.addEventListener('mouseup', (e) => {
     testClic = false;
 })
 
+canvas.addEventListener('touchstart', (e) => {
+    testClic = true;
+})
+
+canvas.addEventListener('touchend', (e) => {
+    testClic = false;
+})
+
 window.onload = function (){
     setInterval(boucle, 10);
 }
 
 function boucle(){
     fond();
+    souris();
     switch (niveau){
         case 'debut':
             debut();
@@ -198,9 +209,9 @@ function jeu(){
         }
     });
 
+    dessineGuirlande(dessinGuirlandeCouleur);
     dessineBoule(dessinBouleCouleur);
     dessineNoeud(dessinNoeudCouleur);
-    dessineGuirlande(dessinGuirlandeCouleur);
     dessineLumiere(dessinLumiereCouleur);
 
     if (testClic && obsWin.collision(posXsouris, posYsouris, 1, 1))
@@ -222,22 +233,22 @@ function fond(){
 function dessineBoule(couleur){
     switch (couleur){
         case 'rouge':
-            ctx.drawImage(bouleRouge,300,100,200,180);
+            ctx.drawImage(bouleRouge,311, 106, 179, 236);
             break;
         case 'orange':
-            ctx.drawImage(bouleOrange,300,100,200,180);
+            ctx.drawImage(bouleOrange,311, 106, 179, 236);
             break;
         case 'jaune':
-            ctx.drawImage(bouleJaune,300,100,200,180);
+            ctx.drawImage(bouleJaune,311, 106, 179, 236);
             break;
         case 'violet':
-            ctx.drawImage(bouleViolet,300,100,200,180);
+            ctx.drawImage(bouleViolet,311, 106, 179, 236);
             break;
         case 'bleu':
-            ctx.drawImage(bouleBleu,300,100,200,180);
+            ctx.drawImage(bouleBleu,311, 106, 179, 236);
             break;
         case 'vert':
-            ctx.drawImage(bouleVert,300,100,200,180);
+            ctx.drawImage(bouleVert,311, 106, 179, 236);
             break;
     }
 }
@@ -245,22 +256,22 @@ function dessineBoule(couleur){
 function dessineNoeud(couleur){
     switch (couleur){
         case 'rouge':
-            ctx.drawImage(noeudRouge,370,235,140,46);
+            ctx.drawImage(noeudRouge,256, 135, 223, 234);
             break;
         case 'jaune':
-            ctx.drawImage(noeudJaune,370,235,140,46);
+            ctx.drawImage(noeudJaune,256, 135, 223, 234);
             break;
         case 'cyan':
-            ctx.drawImage(noeudCyan,370,235,140,46);
+            ctx.drawImage(noeudCyan,340, 101, 133, 265);
             break;
         case 'violet':
-            ctx.drawImage(noeudViolet,370,235,140,46);
+            ctx.drawImage(noeudViolet,256, 135, 223, 234);
             break;
         case 'bleu':
-            ctx.drawImage(noeudBleu,370,235,140,46);
+            ctx.drawImage(noeudBleu,340, 101, 133, 265);
             break;
         case 'vert':
-            ctx.drawImage(noeudVert,370,235,140,46);
+            ctx.drawImage(noeudVert,256, 135, 223, 234);
             break;
     }
 }
@@ -268,22 +279,22 @@ function dessineNoeud(couleur){
 function dessineGuirlande(couleur){
     switch (couleur){
         case 'rouge':
-            ctx.drawImage(guirlandeRouge, 276, 138, 45, 45);
+            ctx.drawImage(guirlandeRouge, 315, 97, 175, 270);
             break;
         case 'cyan':
-            ctx.drawImage(guirlandeCyan, 276, 138, 45, 45);
+            ctx.drawImage(guirlandeCyan, 315, 97, 175, 270);
             break;
         case 'jaune':
-            ctx.drawImage(guirlandeJaune, 276, 138, 45, 45);
+            ctx.drawImage(guirlandeJaune, 315, 97, 175, 270);
             break;
         case 'violet':
-            ctx.drawImage(guirlandeViolet, 276, 138, 45, 45);
+            ctx.drawImage(guirlandeViolet, 315, 97, 175, 270);
             break;
         case 'bleu':
-            ctx.drawImage(guirlandeBleu, 276, 138, 45, 45);
+            ctx.drawImage(guirlandeBleu, 315, 97, 175, 270);
             break;
         case 'vert':
-            ctx.drawImage(guirlandeVert, 276, 138, 45, 45);
+            ctx.drawImage(guirlandeVert, 315, 97, 175, 270);
             break;
     }
 }
@@ -291,22 +302,56 @@ function dessineGuirlande(couleur){
 function dessineLumiere(couleur){
     switch (couleur){
         case 'rouge':
-            ctx.drawImage(lumiereRouge,322, 108, 173, 122);
+            ctx.drawImage(lumiereRouge,329, 129, 122, 218);
             break;
         case 'orange':
-            ctx.drawImage(lumiereOrange,322, 108, 173, 122);
+            ctx.drawImage(lumiereOrange,329, 129, 122, 218);
             break;
         case 'jaune':
-            ctx.drawImage(lumiereJaune,322, 108, 173, 122);
+            ctx.drawImage(lumiereJaune,329, 129, 122, 218);
             break;
         case 'cyan':
-            ctx.drawImage(lumiereCyan,322, 108, 173, 122);
+            ctx.drawImage(lumiereCyan,329, 129, 122, 218);
             break;
         case 'bleu':
-            ctx.drawImage(lumiereBleu,322, 108, 173, 122);
+            ctx.drawImage(lumiereBleu,329, 129, 122, 218);
             break;
         case 'vert':
-            ctx.drawImage(lumiereVert,322, 108, 173, 122);
+            ctx.drawImage(lumiereVert,329, 129, 122, 218);
             break;
+    }
+}
+
+function souris(){
+
+    if (typeof posXsouris != 'undefined' && typeof posYsouris != 'undefined'){
+        testPointer = 0;
+    
+        switch (niveau){
+            case 'debut':
+                if (obsSuiteIntro.collision(posXsouris, posYsouris, 1, 1)){
+                    canvas.style.cursor = 'pointer';
+                    testPointer = 1;
+                }
+                break;
+            case 'tuto':
+                if (obsSuiteTuto.collision(posXsouris, posYsouris, 1, 1)){
+                    canvas.style.cursor = 'pointer';
+                    testPointer = 1;
+                }
+                break;
+            case 'jeu':
+                for (let i=0; i<tabAllObstacle.length; i++){
+                    if (tabAllObstacle[i].collision(posXsouris, posYsouris, 1, 1)){
+                        canvas.style.cursor = 'pointer';
+                        testPointer = 1;
+                        break;
+                    }
+                }
+                break;
+        }
+    
+        if (testPointer < 1)
+            canvas.style.cursor = 'default';
     }
 }

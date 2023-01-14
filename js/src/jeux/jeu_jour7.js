@@ -15,7 +15,8 @@ imgLose.src     = repertoire+'/images/png/jeu_dand_lettres/jeu_dand_lose.png';
 imgJeu.src      = repertoire+'/images/png/jeu_dand_lettres/jeu_dand_jeu.png';
 
 let etape = 'debut';
-let obsSuite = new Obstacle(390,280,110,30);
+let obsSuiteIntro = new Obstacle(390,280,110,30);
+let obsSuiteTuto = new Obstacle(245,275,110,30);
 
 let posXsouris  = 0;
 let posYsouris  = 0;
@@ -26,6 +27,7 @@ let drag        = false;
 let tabObsLettreRouge   = [];
 let tabObsLettreOrange  = [];
 let tabObsLettreVert    = [];
+let tabAllObstacle      = [];
 
 imageLettreRouge = new Image();
 imageLettreRouge.src = repertoire+'/images/png/jeu_dand_lettres/jeu_dand_lettreRouge.png';
@@ -50,10 +52,14 @@ for (let i=0; i<5; i++){
     tabObsLettreRouge[i] = new Obstacle(400,80,60,40);
     tabObsLettreOrange[i] = new Obstacle(400,80,60,40);
     tabObsLettreVert[i] = new Obstacle(400,80,60,40);
+    tabAllObstacle.push(tabObsLettreOrange[i]);
+    tabAllObstacle.push(tabObsLettreRouge[i]);
+    tabAllObstacle.push(tabObsLettreVert[i]);
 }
 
 //Ecoute du déplacement de la souris
 document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener("touchmove", mouseMoveHandler, false);
 
 function mouseMoveHandler(e) {
     var canvasX = e.offsetX;
@@ -75,11 +81,22 @@ canvas.addEventListener('mouseup', (e) => {
     testClic = false;
 })
 
+canvas.addEventListener('touchstart', (e) => {
+    testClic = true;
+})
+
+canvas.addEventListener('touchend', (e) => {
+    testClic = false;
+})
+
+
 window.onload = function(){
     setInterval(boucle,10);
 }
 
 function boucle(){
+
+    souris();
 
     switch (etape){
         case 'debut':
@@ -121,12 +138,12 @@ function boucle(){
 }
 
 function debut(){
-    if (obsSuite.collision(posXsouris, posYsouris, 1, 1) && testClic)
+    if (obsSuiteIntro.collision(posXsouris, posYsouris, 1, 1) && testClic)
         etape = 'tuto';
 }
 
 function tuto(){
-    if (obsSuite.collision(posXsouris, posYsouris, 1, 1) && testClic)
+    if (obsSuiteTuto.collision(posXsouris, posYsouris, 1, 1) && testClic)
         etape = 'jeu';
 }
 
@@ -270,5 +287,45 @@ function dragVert(){
         nombreErreur++;
     } else {
         ctx.drawImage(imageLettreVert, xTmp, yTmp, 60, 40);
+    }
+}
+
+function souris(){
+
+    if (typeof posXsouris != 'undefined' && typeof posYsouris != 'undefined'){
+        testPointer = 0;
+    
+        switch (etape){
+            case 'debut':
+                if (obsSuiteIntro.collision(posXsouris, posYsouris, 1, 1)){
+                    canvas.style.cursor = 'pointer';
+                    testPointer = 1;
+                }
+                break;
+            case 'tuto':
+                if (obsSuiteTuto.collision(posXsouris, posYsouris, 1, 1)){
+                    canvas.style.cursor = 'pointer';
+                    testPointer = 1;
+                }
+                break;
+            case 'jeu':
+                for (let i=0; i<tabAllObstacle.length; i++){
+                    if (tabAllObstacle[i].collision(posXsouris, posYsouris, 1, 1)){
+                        canvas.style.cursor = 'pointer';
+                        testPointer = 1;
+                        break;
+                    }
+                }
+                break;
+            case 'lose':
+                if (obsSuiteIntro.collision(posXsouris, posYsouris, 1, 1)){
+                    canvas.style.cursor = 'pointer';
+                    testPointer = 1;
+                }
+                break;
+        }
+    
+        if (testPointer < 1)
+            canvas.style.cursor = 'default';
     }
 }

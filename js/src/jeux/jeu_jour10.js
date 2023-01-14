@@ -5,6 +5,7 @@ ctx = canvas.getContext('2d');
 
 let niveau = 'debut';
 let testClic = false;
+let testPointer = 0;
 
 let imageIntro  = new Image();
 let imageTuto   = new Image();
@@ -123,6 +124,8 @@ let tabObsPonpon    = [obsPonponCyan,obsPonponRouge,obsPonponOrange,obsPonponBle
 let tabObsBonnet    = [obsBonnetVert,obsBonnetRose,obsBonnetCyan,obsBonnetRouge,obsBonnetOrange,obsBonnetBleu,obsBonnetViolet,obsBonnetJaune];
 let tabObsEtoiles   = [obsEtoileVert,obsEtoileRose,obsEtoileCyan,obsEtoileRouge,obsEtoileOrange,obsEtoileBleu,obsEtoileViolet,obsEtoileJaune];
 
+let tabAllObstacle  = [obsMoumouteVert,obsMoumouteRose,obsMoumouteCyan,obsMoumouteRouge,obsMoumouteOrange,obsMoumouteVertpale,obsMoumouteBleu,obsMoumouteViolet,obsMoumouteJaune, obsPonponCyan,obsPonponRouge,obsPonponOrange,obsPonponBleu,obsPonponViolet,obsPonponJaune, obsBonnetVert,obsBonnetRose,obsBonnetCyan,obsBonnetRouge,obsBonnetOrange,obsBonnetBleu,obsBonnetViolet,obsBonnetJaune, obsEtoileVert,obsEtoileRose,obsEtoileCyan,obsEtoileRouge,obsEtoileOrange,obsEtoileBleu,obsEtoileViolet,obsEtoileJaune, obsWin];
+
 let dessinBonnetCouleur     = '';
 let dessinEtoileCouleur     = '';
 let dessinMoumouteCouleur   = '';
@@ -133,6 +136,7 @@ let obsSuiteTuto = new Obstacle(390,280,110,30);
 
 //Ecoute du déplacement de la souris
 document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener("touchmove", mouseMoveHandler, false);
 
 function mouseMoveHandler(e) {
     var canvasX = e.offsetX;
@@ -154,12 +158,21 @@ canvas.addEventListener('mouseup', (e) => {
     testClic = false;
 })
 
+canvas.addEventListener('touchstart', (e) => {
+    testClic = true;
+})
+
+canvas.addEventListener('touchend', (e) => {
+    testClic = false;
+})
+
 window.onload = function (){
     setInterval(boucle, 10);
 }
 
 function boucle(){
     fond();
+    souris();
     switch (niveau){
         case 'debut':
             debut();
@@ -348,5 +361,39 @@ function dessineEtoile(couleur){
         case 'vert':
             ctx.drawImage(etoileVert,322, 108, 173, 122);
             break;
+    }
+}
+
+function souris(){
+
+    if (typeof posXsouris != 'undefined' && typeof posYsouris != 'undefined'){
+        testPointer = 0;
+    
+        switch (niveau){
+            case 'debut':
+                if (obsSuiteIntro.collision(posXsouris, posYsouris, 1, 1)){
+                    canvas.style.cursor = 'pointer';
+                    testPointer = 1;
+                }
+                break;
+            case 'tuto':
+                if (obsSuiteTuto.collision(posXsouris, posYsouris, 1, 1)){
+                    canvas.style.cursor = 'pointer';
+                    testPointer = 1;
+                }
+                break;
+            case 'jeu':
+                for (let i=0; i<tabAllObstacle.length; i++){
+                    if (tabAllObstacle[i].collision(posXsouris, posYsouris, 1, 1)){
+                        canvas.style.cursor = 'pointer';
+                        testPointer = 1;
+                        break;
+                    }
+                }
+                break;
+        }
+    
+        if (testPointer < 1)
+            canvas.style.cursor = 'default';
     }
 }

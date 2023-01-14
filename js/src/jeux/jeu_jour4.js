@@ -3,6 +3,8 @@ console.log('4');
 var c 		= document.getElementById("canvas");
 var ctx 	= c.getContext("2d");
 
+canvas.style.cursor = 'default';
+
 var x = 0;
 var y = 0;
 var stockX          = new Array();
@@ -148,18 +150,6 @@ let tabObsSucreries = [obsSucrerieBleu,obsSucrerieVert,obsSucrerieJaune,obsSucre
 //------------------Ecoute de la position de la souris dans la page------------
 
 document.addEventListener("mousemove", mouseMoveHandler, false);
-
-function mouseMoveHandler(e) {
-    var canvasX = e.offsetX;
-    var canvasY = e.offsetY;
-    if(canvasX > 0 && canvasX < canvas.width) {
-        posXsouris = canvasX;
-    }
-    if(canvasY > 0 && canvasY < canvas.height) {
-        posYsouris = canvasY;
-    }
-}
-
 document.addEventListener("touchmove", mouseMoveHandler, false);
 
 function mouseMoveHandler(e) {
@@ -172,6 +162,7 @@ function mouseMoveHandler(e) {
         posYsouris = canvasY;
     }
 }
+
 
 //-------------------Ecoute pour le dessin à la souris-------------------------------------
 canvas.addEventListener('mousedown', (e) => {
