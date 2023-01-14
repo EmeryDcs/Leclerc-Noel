@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chercheMagasin.addEventListener('click', function(){
         afficheMap.style.display = 'block';
+        map.invalidateSize();
         retourSite.addEventListener('click', function(){
             afficheMap.style.display = 'none';
         })
