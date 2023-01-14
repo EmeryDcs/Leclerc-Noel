@@ -45,7 +45,7 @@
 			} else {
 				$url = wp_login_url();
 		?>
-				<!-- <meta http-equiv="refresh" content="0;url='<?= $url ?>'"> -->
+				<a href="<?= $url ?>">Se connecter</a>
 		<?php 
 			} 
 		?>
