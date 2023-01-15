@@ -155,12 +155,5 @@ function change_photo_profil($user_id) {
 //Pour récupérer le chemin dans du CSS
 ?>
 
-<style>
-@font-face {
-	font-family: 'Noel';
-	src: url('<?= get_template_directory_uri(); ?>/fonts/AmaticSC-Regular.woff') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-</style>
+
 

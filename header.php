@@ -38,6 +38,15 @@
 	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/structure.css">
 	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/popup.css">
 	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/recette.css">
+
+	<style>
+	@font-face {
+		font-family: 'Noel';
+		src: url('<?= get_template_directory_uri(); ?>/fonts/AmaticSC-Regular.woff') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+	</style>
 	
 
 	<?php wp_head(); ?>
