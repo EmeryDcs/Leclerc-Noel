@@ -42,4 +42,21 @@ document.addEventListener('DOMContentLoaded', () => {
 		afficherCanva.style.display = 'none';
 	})
 
+
+	//Imprimer page
+
+	let boutonImprimer = document.getElementById('boutonImprimer');//imprimer('sectionAimprimer')
+
+	boutonImprimer.addEventListener('click', (e) => {
+		var printContents = document.getElementById('sectionAimprimer').innerHTML;    
+		var originalContents = document.body.innerHTML;      
+		document.body.innerHTML = printContents;     
+		window.print();     
+		document.body.innerHTML = originalContents;
+	});
+
+	
+	// function imprimer(divName) {
+		
+	// }
 })
