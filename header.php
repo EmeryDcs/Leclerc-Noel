@@ -75,14 +75,21 @@
 		<?php 
 			if ( is_user_logged_in() ) { ?>
 				<div id='infoConnexion'>
-					Bienvenue, <?php echo wp_get_current_user()->display_name; ?>!
-					<a href="<?php echo wp_logout_url(get_permalink()); ?>">Déconnexion</a>
+					<button id='voirProfil'>Voir Mon Profil</button>
 				</div>
 		<?php 
 			} else {
 				$url = wp_login_url();
 		?>
-				<a href="<?= $url ?>">Se connecter</a>
+				<a href="<?= $url ?>" id='profilConnexion'>
+					<?php
+						$userId = wp_get_current_user()->ID;
+						$userName = wp_get_current_user()->display_name;
+						$size = 50;
+
+						echo get_avatar($userId, $size);
+					?>
+				</a>
 		<?php 
 			} 
 		?>
@@ -99,8 +106,6 @@
 			</select>
 			<button type='submit' name='subSelectJour'>Choisir</button>
 		</form>
-
-		<button id='voirProfil'>Voir Mon Profil</button>
 
 		<div id='profilUser'>
 			<img src="<?= get_template_directory_uri(); ?>/images/png/croix.png" alt="croix" id='fermerProfil'>

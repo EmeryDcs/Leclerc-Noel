@@ -59,6 +59,21 @@
     font-family: 'Noel';
 }
 
+#profilConnexion{
+    position: absolute;
+    z-index: 9999;
+    top:0;
+    right:0;
+}
+
+#formSelectJour{
+    width:20vw;
+    position: absolute;
+    z-index: 9999;
+    left: 20vw;
+    top:0;
+}
+
 @media screen and (min-width: $tablet) {
 
 }// @media screen and (min-width: $tablet) {
