@@ -1,0 +1,19 @@
+{
+  "name": "leclerc-noel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EmeryDcs/Leclerc-Noel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EmeryDcs/Leclerc-Noel/issues"
+  },
+  "homepage": "https://github.com/EmeryDcs/Leclerc-Noel#readme"
+}

@@ -1,0 +1,108 @@
+/*
+
+cd Dropbox/htdocs/ ***** NOM DU SITE ***** /wp-content/themes/ ***** NOM DU THEME *****
+ls
+sass --watch sass/main.scss:css/main.css --style compressed
+
+*/
+/* ---------- INIT */
+/* 
+
+font-weight: 100; ----- Thin (Hairline)
+font-weight: 200; ----- Extra Light (Ultra Light)
+font-weight: 300; ----- Light
+font-weight: 400; ----- Normal
+font-weight: 500; ----- Medium
+font-weight: 600; ----- Semi Bold
+font-weight: 700; ----- Bold
+font-weight: 800; ----- Extra Bold (Ultra Bold)
+font-weight: 900; ----- Black (Heavy)
+font-weight: 950; ----- Extra Black (Ultra Black)
+
+*/
+@font-face {
+  font-family: "Noel";
+  src: url(FONT_DIRAmaticSC-Regular.woff);
+  font-weight: 400;
+  font-style: normal;
+}
+/* ---------- BALISES HTML COMMUNES */
+#divCanva {
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#formReussite {
+  display: none;
+}
+
+#profilUser {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#fermerProfil {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#fermerCanva {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#voirJeu {
+  display: none;
+}
+
+#telDroit {
+  display: none;
+  font-family: "Noel";
+}
+
+/* ---------- PAGES - structure */
+#mapLeclerc {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#map {
+  height: 35vh;
+  width: 35vw;
+}
+
+#afficheMap {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+#fermerRecherche {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}/*# sourceMappingURL=main.css.map */
