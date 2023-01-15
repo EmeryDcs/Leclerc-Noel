@@ -2,6 +2,13 @@
 
 	session_start();
 
+	$pageId = get_the_ID();
+	$_SESSION['permalink'] = get_the_permalink($pageId);
+
+	if (get_current_user_id()==0 && !isset($_SESSION['coPremiereFois'])){
+		$_SESSION['coPremiereFois']=true;
+		echo '<meta http-equiv="Refresh" content="0; url='.wp_login_url().'">';
+	}
 
 	for ($i = 0; $i<24; $i++){
 		if (isset($_SESSION['jouet'.$i])){
@@ -120,9 +127,6 @@
 		$_SESSION['jour']=$_POST['Jour'];
 		echo '<meta http-equiv="Refresh" content="0; url='.get_permalink().'">';
 	}
-
-	$pageId = get_the_ID();
-	$_SESSION['permalink'] = get_the_permalink($pageId);
 ?>	
 
 
