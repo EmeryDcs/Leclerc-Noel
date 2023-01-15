@@ -1,0 +1,198 @@
+#fond{
+    width:100vw;
+    height:100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+    position: relative;
+    visibility: hidden;
+    opacity:0;
+    transition: all .5s ease;
+}
+
+#box{
+    position:absolute;
+    width:50%;
+    height:60%;
+    top:20%;
+    left:25%;
+    z-index:11;
+    background-color: #F6CDAF;
+    border-radius: 10px;
+    visibility: hidden;
+    opacity:0;
+    transition: all .5s ease;
+
+    -webkit-box-shadow: 0px 0px 0px 16px #CE8651; 
+    box-shadow: 0px 0px 0px 16px #CE8651;
+}
+
+#fond.visible{
+    visibility: visible;
+    opacity:1;
+}
+
+#box.visible{
+    visibility: visible;
+    opacity:1;
+}
+
+.guirlande{
+    position:absolute;
+    z-index:12;
+    top:-8vh;
+    left:0;
+    transform:scale(1.2);
+}
+
+#lutin{
+    position:absolute;
+    width:15%;
+    z-index:9;
+    bottom:5vh;
+    left:23vh;
+    visibility: visible;
+    opacity:1;
+}
+
+#lutin:hover{
+    cursor:pointer;
+    transform: scale(1.1);
+}
+
+#lutin.anim{
+    position:absolute;
+    width:15%;
+    z-index:9;
+    bottom:5vh;
+    left:23vh;
+    visibility: visible;
+    opacity:1;
+    filter: drop-shadow(0 0 0.5rem white);
+    transition: all .5s ease;
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0 0 0rem white);
+    }
+  
+    100% {
+        filter: drop-shadow(0 0 0.5rem white);
+    }
+}
+
+#lutin.anim:hover{
+    cursor:pointer;
+    transform: scale(1.1);
+}
+
+#lutin2{
+    position:absolute;
+    width:15%;
+    z-index:9;
+    bottom:5vh;
+    right:23vh;
+    visibility: visible;
+    opacity:1;
+    transition: all .5s ease;
+}
+
+
+#lutinPop{
+    position:absolute;
+    width:30%;
+    z-index:12;
+    bottom:-3vh;
+    left:-1vh;
+}
+
+#lutinPop.invisible{
+    visibility: hidden;
+    opacity:0;
+}
+
+#lutinPop2{
+    position:absolute;
+    width:30%;
+    z-index:12;
+    bottom:-3vh;
+    left:-1vh;
+    visibility: hidden;
+    opacity:0;
+}
+
+#lutinPop2.visible{
+    visibility: visible;
+    opacity:1;
+}
+
+#content{
+    position: absolute;
+    right:2vh;
+    margin-left:30%
+}
+
+#first{
+    visibility: visible;
+    opacity: 1;
+    z-index:13;
+    position:relative;
+    top:0;
+    font-family: Texte;
+}
+
+#first.invisible{
+    visibility: hidden;
+    opacity:0;
+}
+
+#next{
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    right:2vh;
+    bottom:0;
+}
+
+#next.invisible{
+    visibility: hidden;
+    opacity:0;
+}
+
+#nextPerso{
+    visibility: hidden;
+    opacity:0;
+}
+
+#nextPerso.visible{
+    visibility: visible;
+    opacity: 1;
+    position:absolute;
+    bottom:0;
+    right:2vh;
+}
+
+#second{
+    visibility: hidden;
+    opacity:0;
+    
+}
+
+#second.visible{
+    visibility: visible;
+    opacity: 1;
+    z-index:13;
+    position:absolute;
+    top:0
+}
+
+#fin{
+    visibility: hidden;
+    opacity:0;
+}
+
+#fin.visible{
+    visibility: visible;
+    opacity: 1;
+}

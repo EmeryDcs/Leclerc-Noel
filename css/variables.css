@@ -1,0 +1,14 @@
+:root{
+    --marron-clair:#F6CDAF;
+    --marron-shadow:#CE8651
+}
+
+@font-face {
+    font-family: 'Texte';
+    src: url("<? get_template_directory_uri(); ?>/font/webfont/AmaticSC-Bold.woff2") format('woff2'),
+    url("<? get_template_directory_uri(); ?>/font/webfont/AmaticSC-Bold.woff") format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

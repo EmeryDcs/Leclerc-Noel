@@ -34,6 +34,12 @@
 	<link rel="manifest" href="<?= get_template_directory_uri(); ?>/manifest.webmanifest"> -->
 	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/sass/main.scss">
 
+	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/variables.css">
+	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/structure.css">
+	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/popup.css">
+	<link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/css/recette.css">
+	
+
 	<?php wp_head(); ?>
 
 </head>
@@ -106,3 +112,5 @@
 		echo '<meta http-equiv="Refresh" content="0; url='.get_permalink().'">';
 	}
 ?>	
+
+
