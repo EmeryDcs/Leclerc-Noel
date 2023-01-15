@@ -7,7 +7,7 @@
 
 	if (get_current_user_id()==0 && !isset($_SESSION['coPremiereFois'])){
 		$_SESSION['coPremiereFois']=true;
-		$_SESSION['jour']=1;
+		$_SESSION['jour']=1; //ici session vaudra la valeur du jour réel.
 		echo '<meta http-equiv="Refresh" content="0; url='.wp_login_url().'">';
 		exit();
 	}
@@ -24,7 +24,7 @@
 		setcookie('connectedOnce', true, time()+14400);
 	}
 
-	if (!isset($_COOKIE['motionVu']) && !$_SESSION['permalink'] && $_SESSION['coPremiereFois'] && ($_SESSION['jour'] == 1 || $_SESSION['jour'] == 12 || $_SESSION['jour'] == 24)){
+	if (!isset($_COOKIE['motionVu']) && !$_SESSION['permalink'] && isset($_SESSION['coPremiereFois']) && ($_SESSION['jour'] == 1 || $_SESSION['jour'] == 12 || $_SESSION['jour'] == 24)){
 		setcookie('motionVu', true, time()+14400);
 		echo '<meta http-equiv="Refresh" content="0; url='.home_url().'/motion/">';
 		exit();
