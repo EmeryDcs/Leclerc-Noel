@@ -7,7 +7,9 @@
 
 	if (get_current_user_id()==0 && !isset($_SESSION['coPremiereFois'])){
 		$_SESSION['coPremiereFois']=true;
+		$_SESSION['jour']=1; //ici session vaudra la valeur du jour réel.
 		echo '<meta http-equiv="Refresh" content="0; url='.wp_login_url().'">';
+		exit();
 	}
 
 	for ($i = 0; $i<24; $i++){
@@ -22,6 +24,11 @@
 		setcookie('connectedOnce', true, time()+14400);
 	}
 
+	if (!isset($_COOKIE['motionVu']) && !$_SESSION['permalink'] && isset($_SESSION['coPremiereFois']) && ($_SESSION['jour'] == 1 || $_SESSION['jour'] == 12 || $_SESSION['jour'] == 24)){
+		setcookie('motionVu', true, time()+14400);
+		echo '<meta http-equiv="Refresh" content="0; url='.home_url().'/motion/">';
+		exit();
+	}
 ?>
 <!doctype html>
 <html lang="<?php bloginfo('language'); ?>" dir="ltr">
@@ -68,14 +75,21 @@
 		<?php 
 			if ( is_user_logged_in() ) { ?>
 				<div id='infoConnexion'>
-					Bienvenue, <?php echo wp_get_current_user()->display_name; ?>!
-					<a href="<?php echo wp_logout_url(get_permalink()); ?>">Déconnexion</a>
+					<button id='voirProfil'>Voir Mon Profil</button>
 				</div>
 		<?php 
 			} else {
 				$url = wp_login_url();
 		?>
-				<a href="<?= $url ?>">Se connecter</a>
+				<a href="<?= $url ?>" id='profilConnexion'>
+					<?php
+						$userId = wp_get_current_user()->ID;
+						$userName = wp_get_current_user()->display_name;
+						$size = 50;
+
+						echo get_avatar($userId, $size);
+					?>
+				</a>
 		<?php 
 			} 
 		?>
@@ -92,8 +106,6 @@
 			</select>
 			<button type='submit' name='subSelectJour'>Choisir</button>
 		</form>
-
-		<button id='voirProfil'>Voir Mon Profil</button>
 
 		<div id='profilUser'>
 			<img src="<?= get_template_directory_uri(); ?>/images/png/croix.png" alt="croix" id='fermerProfil'>
