@@ -16,34 +16,12 @@
     if (isset($_SESSION['jour'])){
         $jour = $_SESSION['jour'];
 
+        $permalink = $_SESSION['permalink'];
+
         echo '<script> const repertoire = "'.get_template_directory_uri().'"; </script>';
 
-        echo get_home_url();
-
-        switch ($jour){
-            case 4: 
-                if (get_permalink()==get_home_url().'/cantine')
-                    afficheJeu();
-                break;
-            case 7: 
-                if (get_permalink()==get_home_url().'/bureau')
-                    afficheJeu();
-                break;
-            case 10: 
-                if (get_permalink()==get_home_url().'/usine')
-                    afficheJeu();
-                break;
-            case 16:
-                if (get_permalink()==get_home_url())
-                    afficheJeu(); 
-                break;
-            case 22: 
-                if (get_permalink()==get_home_url().'/salon')
-                    afficheJeu();
-                break;
-        }
-
-        function afficheJeu(){
+        function afficheJeu($jour){
+            echo '<script>console.log("cc");</script>';
             if (!(isset($_COOKIE['jour'.$jour]))){
                 echo '<script src="'.get_template_directory_uri().'/js/src/class.ObstaclePot.js"></script>';
                 echo '<script src="'.get_template_directory_uri().'/js/src/jeux/jeu_jour'.$jour.'.js"></script>';
@@ -61,6 +39,29 @@
                     echo '<meta http-equiv="Refresh" content="0; url='.get_home_url().'">';
                 }
             }
+        }
+
+        switch ($jour){
+            case 4: 
+                if ($permalink==(home_url().'/cantine/'))
+                    afficheJeu($jour);
+                break;
+            case 7: 
+                if ($permalink==(home_url().'/bureau/'))
+                    afficheJeu($jour);
+                break;
+            case 10: 
+                if ($permalink==(home_url().'/usine/'))
+                    afficheJeu($jour);
+                break;
+            case 16:
+                if ($permalink==home_url())
+                    afficheJeu($jour); 
+                break;
+            case 22: 
+                if ($permalink==(home_url().'/salon/'))
+                    afficheJeu($jour);
+                break;
         }
     }
 ?>

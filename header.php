@@ -120,6 +120,9 @@
 		$_SESSION['jour']=$_POST['Jour'];
 		echo '<meta http-equiv="Refresh" content="0; url='.get_permalink().'">';
 	}
+
+	$pageId = get_the_ID();
+	$_SESSION['permalink'] = get_the_permalink($pageId);
 ?>	
 
 
