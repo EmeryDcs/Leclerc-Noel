@@ -21,7 +21,7 @@ $heureJour      = date('m.d H', time());
 
 if ($heureJour == '12.13 15'){
     if ($randomGrosLot == 1){
-        while ($tab as mysqli_fetch_assoc($resGrosLot)){
+        while ($tab = mysqli_fetch_assoc($resGrosLot)){
             if ($tab==0){
                 echo 'Vous avez gagné le gros lot !! On vous envoie par mail toutes les informations nécessaire à la réclamation de votre lot.';
 
@@ -64,7 +64,7 @@ switch ($heureJour){
 
 function testLot(){
     if ($randomMoyenLot == 1){
-        while ($tab as mysqli_fetch_assoc($resMoyenLot)){
+        while ($tab = mysqli_fetch_assoc($resMoyenLot)){
             if ($tab<20){
                 echo 'Vous avez gagné le Moyen lot !! On vous envoie par mail toutes les informations nécessaire à la réclamation de votre lot.';
 
@@ -75,7 +75,7 @@ function testLot(){
     }
 
     if ($randomPetitLot == 1){
-        while ($tab as mysqli_fetch_assoc($resPetitLot)){
+        while ($tab = mysqli_fetch_assoc($resPetitLot)){
             if ($tab<100){
                 echo 'Vous avez gagné le Petit lot !! On vous envoie par mail toutes les informations nécessaire à la réclamation de votre lot.';
 
@@ -86,7 +86,7 @@ function testLot(){
     }
 
     if ($randomMiniLot == 1){
-        while ($tab as mysqli_fetch_assoc($resMiniLot)){
+        while ($tab = mysqli_fetch_assoc($resMiniLot)){
             if ($tab<1000){
                 echo 'Vous avez gagné le Mini lot !! On vous envoie par mail toutes les informations nécessaire à la réclamation de votre lot.';
 

@@ -2,6 +2,22 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+	//Utilisateur téléphone retourné ou non
+	let telDroit = document.getElementById('telDroit');
+	let telRetourne = document.getElementById('telRetourne');
+
+	window.addEventListener("orientationchange", function() {
+		if (screen.orientation.angle === 90) {
+		  	telDroit.style.display = 'none';
+			telRetourne.style.display = 'block';
+		} else {
+			telDroit.style.display = 'block';
+			telRetourne.style.display = 'none';
+		}
+	  });
+	  
+
+	//Affichage du profil en lightbox
 	let voirProfil = document.getElementById('voirProfil');
 	let profil = document.getElementById('profilUser');
 	let fermerProfil = document.getElementById('fermerProfil')
@@ -14,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		profil.style.display = "none";
 	})
 
+	//Affichage du Jeu en lightbox
 	let afficherJeu = document.getElementById('voirJeu');
 	let afficherCanva = document.getElementById('divCanva');
 	let cacherCanva = document.getElementById('fermerCanva');

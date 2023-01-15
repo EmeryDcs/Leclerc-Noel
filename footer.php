@@ -7,6 +7,7 @@
         <button type='submit' name='reussiteJeu' class='button'>Partir -></button>
     </form>
 </div>
+</div><!-- div id ='telRetourne' trouvable dans le header.php-->
 
 
 <?php wp_footer(); ?>
@@ -31,7 +32,7 @@
 
                 echo $_COOKIE['jouet'.$jour];
     
-		        echo '<meta http-equiv="Refresh" content="0; url='.get_permalink().'">';
+		        echo '<meta http-equiv="Refresh" content="0; url='.get_home_url().'">';
             }
         }
     }

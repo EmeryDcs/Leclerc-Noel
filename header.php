@@ -39,7 +39,9 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<div id='telDroit'>Pour une meilleure expérience, retourne ton téléphone !</div>
 
+	<div id='telRetourne'>
 	<header>
 		<?php 
 			if ( is_user_logged_in() ) { ?>
