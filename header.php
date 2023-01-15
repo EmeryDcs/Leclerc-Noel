@@ -45,7 +45,7 @@
 		src: url('<?= get_template_directory_uri(); ?>/fonts/AmaticSC-Regular.woff') format('truetype');
 		font-weight: normal;
 		font-style: normal;
-	}
+	} 
 	</style>
 	
 
@@ -72,7 +72,7 @@
 		<?php 
 			} 
 		?>
-
+		
 
 		<!-- Choix du jour -->
 		<form method="post" action="" id="formSelectJour">

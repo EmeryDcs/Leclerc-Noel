@@ -25,7 +25,29 @@ Template Name: Page Bureau
 		</div>
 		</a>
 
-		<section id="day1">
+		<?php 
+		if ( $_SESSION['jour'] == 1){
+			echo '
+			<img src="'.get_template_directory_uri().'/img/PNG/lutin.png" alt="lutin" id="lutin">
+
+
+		<div id="fond">
+			<div id="box">
+			<img src="'.get_template_directory_uri().'/img/SVG/guirlande-16.svg" alt="guirlande" id="guirlande">
+			<img src="'.get_template_directory_uri().'/img/PNG/lutin.png" alt="lutin" id="lutinPop">
+
+				<div id="content">
+					<p id="Presentation">Bonjour moi c est Rusé</p>
+					
+				</div>
+				<button id="PresentationFin">Finito</button>
+
+			</div>
+		</div>';
+		}
+		?>
+
+		<!-- <section id="day1">
 
 				<img src="<?= get_template_directory_uri() ?>/img/PNG/lutin.png" alt="lutin" id="lutin">
 				<img src="<?= get_template_directory_uri() ?>/img/PNG/fifou.png" alt="lutin" id="lutin2">
@@ -46,7 +68,7 @@ Template Name: Page Bureau
 
 				</div>
 			</div>
-		</section>
+		</section> -->
 
 	</main>
 

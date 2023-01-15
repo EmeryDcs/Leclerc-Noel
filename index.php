@@ -16,7 +16,7 @@
 
 			<!-- <img src="<?= get_template_directory_uri() ?>/img/PNG/fond_exterieur_nuit_tempete.png" alt="img fond" class="bg"> -->
 
-			<img src="<?= get_template_directory_uri() ?>/img/SVG/logo.svg" alt="img pancarte" class="logo">
+			<!-- <img src="<?= get_template_directory_uri() ?>/img/SVG/logo.svg" alt="img pancarte" class="logo"> -->
 
 			<a href="salon"><img src="<?= get_template_directory_uri() ?>/img/SVG/pancarte_salon.svg" alt="img pancarte" class="salon"></a>
 			<a href="chambre"><img src="<?= get_template_directory_uri() ?>/img/SVG/pancarte_chambre.svg" alt="img pancarte" class="chambre"></a>
@@ -27,4 +27,22 @@
 		</section>
 	</main>
 
+	<?php 
+	if ( $_SESSION['jour'] == 1){
+		// echo '<img src="'.get_template_directory_uri().'/img/PNG/fifou.png" alt="img fifou" id="lutinIndex">';
+
+		echo '<div id="fondIndex">
+				<div id="boxIndex">
+					<img src="'.get_template_directory_uri().'/img/SVG/guirlande-16.svg" alt="guirlande" id="guirlande">
+					<img src="'.get_template_directory_uri().'/img/PNG/lutin.png" alt="lutin" id="lutinPopIndex">
+
+				<div id="content">
+					<p id="first"></p>
+				</div>
+
+				</div>
+			</div>';
+	};
+	?>
+	
 <?php get_footer(); ?>

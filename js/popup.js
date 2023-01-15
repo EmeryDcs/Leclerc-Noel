@@ -1,18 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("lutin").classList.add('anim')
     document.getElementById("lutin").addEventListener("click", openPopUp);
+    document.getElementById("lutinIndex").addEventListener("click", openPopUpPres);
 
     function openPopUp(){
         document.getElementById("fond").classList.toggle('visible')
         document.getElementById("box").classList.toggle('visible')
         document.getElementById("lutin").classList.remove('anim')
-        var first = new Typed('#first',{
-            strings : ["Oh, tu es bien de retour ! Ravi que tu sois prêt à nous aider à sauver Noël. Il y aura beaucoup de tâches que tu devras accomplir pour avoir l'étoffe d’un vrai père Noel."],
-            typeSpeed: 50,
-            delaySpeed: 250,
-            cursorChar: '',
-            loop: false
-        })
+    }
+
+    function openPopUpPres(){
+        document.getElementById("fond").classList.toggle('visible')
+        document.getElementById("box").classList.toggle('visible')
+        document.getElementById("lutin").classList.remove('anim')
     }
 
     document.getElementById("fin").addEventListener("click", closePopUp);
@@ -27,8 +27,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         document.getElementById("lutinPop2").classList.remove('visible')
         document.getElementById("lutinPop").classList.remove('invisible')
+    }
 
-        
+    document.getElementById("PresentationFin").addEventListener("click", closePopUpPres);
+    function closePopUpPres(){
+        document.getElementById("fond").classList.toggle('visible')
+        document.getElementById("box").classList.toggle('visible')
+
+        document.getElementById("lutinPop").classList.remove('invisible')
     }
 
     document.getElementById("next").addEventListener("click", prochain);
