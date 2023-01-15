@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("lutin").classList.add('anim')
-    document.getElementById("lutin").addEventListener("click", openPopUp);
-    document.getElementById("lutinIndex").addEventListener("click", openPopUpPres);
+    document.getElementById("lutin").addEventListener("click", openPopUp)
+    document.getElementById("lutinIndex").addEventListener("click", openPopUpPres)
 
     function openPopUp(){
         document.getElementById("fond").classList.toggle('visible')
