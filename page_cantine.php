@@ -57,7 +57,7 @@ Template Name: Page Cantine
 
 						echo '<div id="sectionAimprimer">';
 
-						if ($jour == 3){
+						if ( $_SESSION['jour'] == 3 && $jour==3){
 							echo "<div class='BgRecette'>";
 							echo "<h1 class='TitreRecette'>" .$recette ."</h1>";
 							echo "<div class='TempsRecette'>";
@@ -91,6 +91,28 @@ Template Name: Page Cantine
 
 			?>
 		</section>
+
+		<?php 
+		if ( $_SESSION['jour'] == 1){
+			echo '
+			<img src="'.get_template_directory_uri().'/img/PNG/flocon.png" alt="flocon" id="lutin">
+
+
+		<div id="fond">
+			<div id="box">
+			<img src="'.get_template_directory_uri().'/img/SVG/guirlande-16.svg" alt="guirlande" id="guirlande">
+			<img src="'.get_template_directory_uri().'/img/PNG/flocon.png" alt="flocon.png" id="lutinPop">
+
+				<div id="content">
+					<p id="Presentation">Salut salut ! Mon ptit nom à moi, c’est Floconou-Matibou-Rababou, mais tu peux m appeler Floconou ! La cuisine et moi, on fait qu un ! Donc je fais de bons petits plats à tous mes camarades ! </p>
+					
+				</div>
+				<button id="PresentationFin">Finito</button>
+
+			</div>
+		</div>';
+		}
+		?>
 
 	</main>
 	

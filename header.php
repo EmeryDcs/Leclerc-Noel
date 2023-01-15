@@ -70,6 +70,18 @@
 <body <?php body_class(); ?>>
 	<div id='telDroit'>Pour une meilleure expérience, retourne ton téléphone !</div>
 
+	<form method="post" action="" id="formSelectJour">
+			<select name="Jour" id="selectJour">
+				<?php 
+					for ($iJour=1; $iJour<25; $iJour++){
+						echo "<option value='".$iJour."'>".$iJour."</option>";
+					}
+				?>
+			</select>
+		<button type='submit' name='subSelectJour'>Choisir</button>
+	</form>
+
+
 	<div id='telRetourne'>
 	<header>
 		<?php 

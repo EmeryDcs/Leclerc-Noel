@@ -39,7 +39,7 @@
 .guirlande{
     position:absolute;
     z-index:12;
-    top:-8vh;
+    top:-6vh;
     left:0;
     transform:scale(1.2);
 }
@@ -158,8 +158,9 @@
 
 #content{
     position: absolute;
+    top:8vh;
     right:2vh;
-    margin-left:30%
+    margin-left: 30%;
 }
 
 #first{
@@ -244,14 +245,14 @@
 
 
 #fondIndex{
-    position: relative;
+    position: absolute;
     top:0;
     width:100vw;
     height:100vh;
     background-color: rgba(0,0,0,0.5);
     z-index: 10;
-    visibility: visible;
-    opacity:1;
+    visibility: hidden;
+    opacity:0;
     transition: all .5s ease;
 }
 
@@ -264,8 +265,8 @@
     z-index:11;
     background-color: #F6CDAF;
     border-radius: 10px;
-    visibility: visible;
-    opacity:1;
+    visibility: hidden;
+    opacity:0;
     transition: all .5s ease;
 
     -webkit-box-shadow: 0px 0px 0px 16px #CE8651; 
@@ -275,19 +276,24 @@
 #lutinPopIndex{
     position:absolute;
     width:30%;
-    z-index:12;
+    z-index:15;
     bottom:-3vh;
     left:-1vh;
+    visibility: hidden;
+    opacity:0;
+}
+
+#lutinPopIndex.visible{
     visibility: visible;
     opacity:1;
 }
 
-#fondIndex.invisible{
-    visibility: hidden;
-    opacity:0;
+#fondIndex.visible{
+    visibility: visible;
+    opacity:1;
 }
 
-#boxIndex.invisible{
-    visibility: hidden;
-    opacity:0;
+#boxIndex.visible{
+    visibility: visible;
+    opacity:1;
 }

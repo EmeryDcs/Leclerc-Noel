@@ -25,6 +25,9 @@ Template Name: Page Salon
 		</div>
 		</a>
 
+		
+		</section>
+
 	</main>
 
 	

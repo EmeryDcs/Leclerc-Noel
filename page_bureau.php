@@ -37,7 +37,7 @@ Template Name: Page Bureau
 			<img src="'.get_template_directory_uri().'/img/PNG/lutin.png" alt="lutin" id="lutinPop">
 
 				<div id="content">
-					<p id="Presentation">Bonjour moi c est Rusé</p>
+					<p id="Presentation">Bien le bonjour. Le nom qui m’est attribué est rusé, en rapport avec mon extrême intelligence qui fait foi dans ma famille depuis des générations. Ma fonction en ce lieu est de vérifier que tous les lieux soient conformes à la sécurité en vigueur.</p>
 					
 				</div>
 				<button id="PresentationFin">Finito</button>

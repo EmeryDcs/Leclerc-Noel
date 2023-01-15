@@ -23,8 +23,30 @@ Template Name: Page Usine
 			<div class="arrow"></div>
 		</div>
 		</a>
+		<?php 
+		if ( $_SESSION['jour'] == 1){
+			echo '
+			<img src="'.get_template_directory_uri().'/img/PNG/malicette.png" alt="flocon" id="lutin">
 
+
+		<div id="fond">
+			<div id="box">
+			<img src="'.get_template_directory_uri().'/img/SVG/guirlande-16.svg" alt="guirlande" id="guirlande">
+			<img src="'.get_template_directory_uri().'/img/PNG/malicette.png" alt="malicette.png id="lutinPop">
+
+				<div id="content">
+					<p id="Presentation">Bonjour ! Moi c’est Malicette, enchantée, hihi ! Je travaille principalement dans l’usine de cadeaux, c’est moi qui m’occupe de la machine pour les fabriquer, hihi !  </p>
+					
+				</div>
+				<button id="PresentationFin">Finito</button>
+
+			</div>
+		</div>';
+		}
+		?>
+		
 	</main>
+	
 	
 
 <?php get_footer(); ?>

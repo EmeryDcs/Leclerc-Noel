@@ -29,20 +29,22 @@
 
 	<?php 
 	if ( $_SESSION['jour'] == 1){
-		// echo '<img src="'.get_template_directory_uri().'/img/PNG/fifou.png" alt="img fifou" id="lutinIndex">';
+		echo '<img src="'.get_template_directory_uri().'/img/PNG/fifou.png" alt="img fifou" id="lutinIndex">';
 
 		echo '<div id="fondIndex">
 				<div id="boxIndex">
 					<img src="'.get_template_directory_uri().'/img/SVG/guirlande-16.svg" alt="guirlande" id="guirlande">
-					<img src="'.get_template_directory_uri().'/img/PNG/lutin.png" alt="lutin" id="lutinPopIndex">
+					<img src="'.get_template_directory_uri().'/img/PNG/fifou.png" alt="lutin" id="lutinPopIndex">
 
 				<div id="content">
 					<p id="first"></p>
+					<button id="FinPopIndex">Close</button>
 				</div>
-
+				
 				</div>
 			</div>';
 	};
 	?>
+	
 	
 <?php get_footer(); ?>
