@@ -44,6 +44,7 @@ sass --watch sass/main.scss:css/main.css --style compressed
 @import '_pages/_taxonomy.scss';
 @import '_pages/_single.scss';
 @import '_pages/_map.scss';
+@import '_pages/_motion.scss';
 
 //* {
 //	background-color: rgba( 0, 255, 0, 0.1 );// ----- LAYOUT DEBUG

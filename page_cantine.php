@@ -55,6 +55,8 @@ Template Name: Page Cantine
 						// echo $tempsprepa;
 						// echo $jour;
 
+						echo '<div id="sectionAimprimer">';
+
 						if ($jour == 3){
 							echo "<div class='BgRecette'>";
 							echo "<h1 class='TitreRecette'>" .$recette ."</h1>";
@@ -75,11 +77,14 @@ Template Name: Page Cantine
 		
 							echo "</div>";
 						}
+
+						echo '</div>';
+						
 					
 					} 
 
 					
-					
+					?> <button class="button" id="boutonImprimer">Imprimer</button> <?php
 				}
 				
 				
