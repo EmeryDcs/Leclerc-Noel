@@ -1,3 +1,7 @@
+body{
+    overflow:hidden;
+}
+
 .accueil {
     display: flex;
     justify-content: center;

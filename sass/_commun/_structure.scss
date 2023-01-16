@@ -50,8 +50,32 @@
 
 #voirJeu{
     display: none;
-    position:absolute;
-    z-index: 9999;
+    position:relative;
+    z-index:15;
+
+    bottom:35vh;
+    margin: 30px auto 0;
+    font-size:20px;
+    font-weight:lighter;
+    color:white;
+    padding:25px 80px;
+    background: #b72339;
+    outline:none;
+    border:none;
+    border-radius: 20px;
+    
+    box-shadow: 0 6px #931c33;
+    cursor: pointer;
+}
+
+#voirJeu.active{
+    box-shadow: 0 0 #931c33;
+    top:6px;
+}
+
+#canvas{
+    position: absolute;
+    z-index: 20;
 }
 
 #telDroit{

@@ -57,7 +57,7 @@ Template Name: Page Cantine
 
 						echo '<div id="sectionAimprimer">';
 
-						if ( $_SESSION['jour'] == 3 && $jour==3){
+						if ( $_SESSION['jour'] == 13 && $jour==13){
 							echo "<div class='BgRecette'>";
 							echo "<h1 class='TitreRecette'>" .$recette ."</h1>";
 							echo "<div class='TempsRecette'>";

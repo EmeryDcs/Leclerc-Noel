@@ -36,7 +36,7 @@
     opacity:1;
 }
 
-.guirlande{
+#guirlande{
     position:absolute;
     z-index:12;
     top:-6vh;
@@ -296,4 +296,22 @@
 #boxIndex.visible{
     visibility: visible;
     opacity:1;
+}
+
+#FinPopIndex{
+    position: absolute;
+    z-index:20;
+    top:35vh;
+    right:10vh;
+    font-size:15px;
+    font-weight:lighter;
+    color:white;
+    padding:15px 20px;
+    background: #b72339;
+    outline:none;
+    border:none;
+    border-radius: 5px;
+    
+    box-shadow: 0 6px #931c33;
+    cursor: pointer;
 }
